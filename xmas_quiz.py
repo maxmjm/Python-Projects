@@ -32,4 +32,4 @@ else:
     print("Incorrect!")
 
 percentage = round((score / num_questions) * 100, 2)
-print("You scored " + str(score) + "/" + str(num_questions) + " (" + str(percentage) + "%)")
+print(f"You scored {score}/{num_questions} ({percentage}%)")
