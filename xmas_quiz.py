@@ -9,3 +9,24 @@ else:
 
 score = 0
 num_questions = 3
+
+answer = input("What is the name of the reindeer that leads Santa's sleigh? ")
+if answer.lower() == "rudolph":
+    print("Correct!")
+    score += 1
+else:
+    print("Incorrect!")
+
+answer = input('In "The Polar Express", Tom Hanks played how many roles? ')
+if answer.lower() == "6" or answer.lower() == "six":
+    print("Correct!")
+    score += 1
+else:
+    print("Incorrect!")
+
+answer = input("What traditional Christmas decoration is actually a parasitic plant? ")
+if answer.lower() == "mistletoe":
+    print("Correct!")
+    score += 1
+else:
+    print("Incorrect!")
