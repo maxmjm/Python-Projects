@@ -8,8 +8,8 @@ print("Welcome to the number guessing game! Guess a number between 0 and 10!")
 while True:
     num_guess += 1
     user_guess = input("Make a guess: ")
-    
-    if user_guess.isdigit():
+
+    try:
         user_guess = int(user_guess)
 
         if user_guess < 0:
@@ -19,8 +19,8 @@ while True:
         if user_guess > 10:
             print("Please choose a number less than or equal to 10!")
             continue
-
-    else:
+    
+    except ValueError:
         print("Please type a valid number!")
         continue
 
