@@ -2,45 +2,32 @@ import random
 
 user_wins = 0
 computer_wins = 0
-options = ["paper", "scissors", "rock", "quit", "p", "s", "r", "q"]
+options = ["paper", "scissors", "rock"]
+shortcuts = {"p": "paper", "s": "scissors", "r": "rock", "q": "quit"}
 
 while True:
     user_input = input("Type paper (p), scissors (s), rock (r), or quit (q): ").lower()
 
-    if (user_input == "quit" or user_input == "q"):
-        print("Game over! You scored", user_wins, f"and the computer scored {computer_wins}.")
+    user_input = shortcuts.get(user_input, user_input) # Map shortcuts to full word
+
+    if (user_input == "quit"):
+        print(f"Game over! You won {user_wins} time/s. The computer won {computer_wins} time/s.")
         break
 
     if user_input not in options:
         print("Invalid input please try again!")
         continue
 
-    random_num = random.randint(0, 2) # paper: 0, scissors: 1, rock: 2 
-
-    computer_pick = options[random_num]
+    computer_pick = random.choice(options)
     print(f"Computer picked {computer_pick}.")
 
-    if (user_input == "paper" or user_input == "p") and (computer_pick == "rock"):
-        print("Paper beats rock you win!")
-        user_wins += 1
-    
-    elif (user_input == "scissors" or user_input == "s") and (computer_pick == "paper"):
-        print("Scissors beats paper you win!")
-        user_wins += 1
-        
-    elif (user_input == "rock" or user_input == "r") and (computer_pick == "scissors"):
-        print("Rock beats scissors you win!")
-        user_wins += 1
-        continue
+    if user_input == computer_pick:
+        print("It's a tie!")
 
-    elif (computer_pick == "paper") and (user_input == "rock" or user_input == "r"):
-        print("Paper beats rock you lost!")
-        computer_wins += 1
-    
-    elif (computer_pick == "scissors") and (user_input == "paper" or user_input == "p"):
-        print("Scissors beats paper you lost!")
-        computer_wins += 1
-        
-    elif (computer_pick == "rock") and (user_input == "scissors" or user_input == "s"):
-        print("Rock beats scissors you lost!")
+    elif (user_input == "paper" and computer_pick == "rock") or (user_input == "scissors" and computer_pick == "paper") or (user_input == "rock" and computer_pick == "scissors"):
+        print(f"{user_input.capitalize()} beats {computer_pick}. You win! ")
+        user_wins += 1
+
+    else: 
+        print(f"{computer_pick.capitalize()} beats {user_input}. You lose!")
         computer_wins += 1
