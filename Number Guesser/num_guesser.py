@@ -28,12 +28,9 @@ while True:
         print(f"You got it! The correct number was {random_num}.")
         break
 
+    elif user_guess > random_num:
+        print("Lower!")
     else:
-        if user_guess > random_num:
-            print("Lower!")
-            continue
-        else:
-            print("Higher!")
-            continue
+        print("Higher!")
 
 print("It took you", num_guess, "guesses!")
