@@ -1,15 +1,18 @@
 master_password = input("What is the master password? ")
 
 def add():
-    name = input("Account Name: ")
-    password = input("Password: ")
+    account_name = input("Account Name: ")
+    account_password = input("Password: ")
 
     with open("passwords.txt", "a") as password_file:
-        password_file.write(name + " | " + password + "\n")
-
+        password_file.write(account_name + " | " + account_password + "\n")
 
 def view():
-    pass
+    with open("passwords.txt", "r") as password_file:
+        for line in password_file.readlines():
+            data = line.rstrip()
+            name, password = data.split("|")
+            print("Account Name:", name, "| Password:", password)
 
 while True:
 
