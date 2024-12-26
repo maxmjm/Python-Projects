@@ -1,7 +1,12 @@
-password = input("What is the master password? ")
+master_password = input("What is the master password? ")
 
 def add():
-    pass
+    name = input("Account Name: ")
+    password = input("Password: ")
+
+    with open("passwords.txt", "a") as password_file:
+        password_file.write(name + " | " + password + "\n")
+
 
 def view():
     pass
@@ -15,10 +20,10 @@ while True:
         break
 
     if mode == "add":
-        pass
+        add()
 
     elif mode == "view":
-        pass
+        view()
 
     else:
         print("Invalid mode!")
