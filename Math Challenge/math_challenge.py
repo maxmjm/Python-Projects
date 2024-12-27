@@ -35,6 +35,10 @@ for i in range(TOTAL_PROBLEMS):
 end_time = time.time()
 total_time = round(end_time - start_time, 2)
 
+correct_answers = TOTAL_PROBLEMS
+total_guesses = correct_answers + wrong_guess
+accuracy = round((correct_answers / total_guesses) * 100, 2)
+
 print("---------------------")
-print("You finished in", total_time, "seconds with an accuracy of")
+print("You finished in", total_time, f"seconds with an accuracy of {accuracy}%")
         
