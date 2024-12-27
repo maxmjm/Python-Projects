@@ -1,3 +1,5 @@
+import turtle
+
 def get_number_of_racers():
     number_of_racers = 0
     while True:
