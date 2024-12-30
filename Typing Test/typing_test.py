@@ -30,12 +30,16 @@ def wpm_typing_test(standard_output_screen):
     while True:
         time_elapsed = max(time.time() - start_time, 1)
         wpm = round((len(current_text) / (time_elapsed / 60)) / 5)
+        standard_output_screen.nodelay(True)
 
         standard_output_screen.clear()
         display_text(standard_output_screen, target_text, current_text, wpm)
         standard_output_screen.refresh()
 
-        key = standard_output_screen.getkey()
+        try:
+            key = standard_output_screen.getkey()
+        except:
+            continue
 
         if ord(key) == 27: # Escape key
             break
