@@ -60,10 +60,14 @@ def main(standard_output_screen):
     curses.init_pair(3, curses.COLOR_WHITE, curses.COLOR_BLACK)
 
     start_screen(standard_output_screen)
-    wpm_typing_test(standard_output_screen)
 
-    standard_output_screen.addstr(2, 0, "You completed the text! Press any key to continue...")
-    standard_output_screen.getkey()
+    while True:
+        wpm_typing_test(standard_output_screen)
+        standard_output_screen.addstr(2, 0, "You completed the text! Press any key to continue...")
+        key = standard_output_screen.getkey()
+
+        if ord(key) == 27:
+            break
 
 wrapper(main)
     
