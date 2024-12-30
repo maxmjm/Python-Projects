@@ -36,6 +36,10 @@ def wpm_typing_test(standard_output_screen):
         display_text(standard_output_screen, target_text, current_text, wpm)
         standard_output_screen.refresh()
 
+        if "".join(current_text) == target_text:
+            standard_output_screen.nodelay(False)
+            break
+
         try:
             key = standard_output_screen.getkey()
         except:
@@ -57,6 +61,9 @@ def main(standard_output_screen):
 
     start_screen(standard_output_screen)
     wpm_typing_test(standard_output_screen)
+
+    standard_output_screen.addstr(2, 0, "You completed the text! Press any key to continue...")
+    standard_output_screen.getkey()
 
 wrapper(main)
     
