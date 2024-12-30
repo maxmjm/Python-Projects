@@ -10,6 +10,7 @@ def start_screen(standard_output_screen):
 
 def display_text(standard_output_screen, target, current, wpm = 0):
     standard_output_screen.addstr(target)
+    standard_output_screen.addstr(1, 0, f"WPM: {wpm}")
 
     for i, char in enumerate(current):
         correct_char = target[i]
@@ -22,10 +23,11 @@ def display_text(standard_output_screen, target, current, wpm = 0):
 def wpm_typing_test(standard_output_screen):
     target_text = "Hello world this is some text for the app!"
     current_text = []
+    wpm = 0
 
     while True:
         standard_output_screen.clear()
-        display_text(standard_output_screen, target_text, current_text)
+        display_text(standard_output_screen, target_text, current_text, wpm)
         standard_output_screen.refresh()
 
         key = standard_output_screen.getkey()
