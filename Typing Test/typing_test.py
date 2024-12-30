@@ -1,5 +1,6 @@
 import curses
 from curses import wrapper
+import time
 
 def start_screen(standard_output_screen):
     standard_output_screen.clear()
@@ -24,8 +25,12 @@ def wpm_typing_test(standard_output_screen):
     target_text = "Hello world this is some text for the app!"
     current_text = []
     wpm = 0
+    start_time = time.time()
 
     while True:
+        time_elapsed = max(time.time() - start_time, 1)
+        wpm = round((len(current_text) / (time_elapsed / 60)) / 5)
+
         standard_output_screen.clear()
         display_text(standard_output_screen, target_text, current_text, wpm)
         standard_output_screen.refresh()
